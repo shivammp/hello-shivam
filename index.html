@@ -38,10 +38,30 @@
             animation: fadeIn 1.5s ease-in-out;
         }
 
-        p {
+        .welcome-text {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             animation: slideUp 1s ease-in-out;
+            min-height: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .github-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeIn {
@@ -64,7 +84,33 @@
 <body>
     <div class="container">
         <h1>Hello World</h1>
-        <p>Welcome to this modern and sleek design</p>
+        <div class="welcome-text" id="welcomeText">Hello, User</div>
+        <a href="https://github.com/shivammp" class="github-link" target="_blank">Visit My GitHub</a>
     </div>
+
+    <script>
+        const messages = [
+            "Hello, User",
+            "Hello, Cutie",
+            "Hello, Friend",
+            "Hello, Developer",
+            "Hello, Genius",
+            "Hello, Star"
+        ];
+        
+        let currentIndex = 0;
+        const welcomeText = document.getElementById('welcomeText');
+        
+        function changeMessage() {
+            welcomeText.style.opacity = '0';
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % messages.length;
+                welcomeText.textContent = messages[currentIndex];
+                welcomeText.style.opacity = '1';
+            }, 500);
+        }
+        
+        setInterval(changeMessage, 3000);
+    </script>
 </body>
 </html> 
